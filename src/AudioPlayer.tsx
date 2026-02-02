@@ -20,9 +20,9 @@ export function AudioPlayer({ videoId }: { videoId: string }) {
         if (!player || !currentState) return;
         if (currentState === 'start' && !playbackStateInterval) {
             setPlaybackStateInterval(setInterval(() => {
-                const time = player.getCurrentTime();
+                const time = (player.getCurrentTime() / player.getDuration()) * 100;
                 setCurrentPlaybackState({ time });
-            }, 1000));
+            }, 500));
         }
         else {
             clearInterval(playbackStateInterval);
@@ -63,7 +63,7 @@ export function AudioPlayer({ videoId }: { videoId: string }) {
             </div>
             <div className="status-container">
                 <div className="base"></div>
-                <div className="status" style={{ width: (currentPlaybackState.time || 0) }}></div>
+                <div className="status" style={{ width: (currentPlaybackState.time || 0) + "%" }}></div>
             </div>
         </div>
     );
