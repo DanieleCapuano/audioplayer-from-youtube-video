@@ -1,0 +1,54 @@
+#root {
+    padding: 40px;
+    #player {
+        display: none;
+    }
+
+    .audio-player {
+        width: 500px;
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        background-color: rgb(235, 235, 235);
+
+        >* {
+            display: inline-block;
+            min-width: 0;
+        }
+
+        >.status-container {
+            width: 100%;
+            padding: 17px 40px;
+            position: relative;
+            > div {
+                width: calc(100% - 20px);
+                height: 2px;
+                position: absolute;
+                left: 10px;
+                background-color: rgb(182 182 182);
+                &.status {
+                    width: 0;
+                    background-color: black;
+                }
+            }
+        }
+
+        >.controls {
+            min-width: 120px;
+            display: flex;
+            flex-direction: row;
+            >.ctl {
+                display: inline-block;
+                width: 40px;
+                height: 100%;
+                padding: 2px;
+                cursor: pointer;
+                flex: 1;
+                margin: 2px;
+                min-width: 0;
+            }
+        }
+
+    }
+}
