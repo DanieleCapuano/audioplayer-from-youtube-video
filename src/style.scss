@@ -1,5 +1,6 @@
 #root {
     padding: 40px;
+
     #player {
         display: none;
     }
@@ -21,12 +22,14 @@
             width: 100%;
             padding: 17px 40px;
             position: relative;
-            > div {
+
+            >div {
                 width: calc(100% - 20px);
                 height: 2px;
                 position: absolute;
                 left: 10px;
                 background-color: rgb(182 182 182);
+
                 &.status {
                     width: 0;
                     background-color: black;
@@ -38,6 +41,8 @@
             min-width: 120px;
             display: flex;
             flex-direction: row;
+            padding: 2px 0;
+
             >.ctl {
                 display: inline-block;
                 width: 40px;
@@ -47,6 +52,16 @@
                 flex: 1;
                 margin: 2px;
                 min-width: 0;
+
+                &.active {
+                    color: rgb(128, 128, 234);
+                }
+
+                &:hover {
+                    svg {
+                        box-shadow: 1px 1px 2px gray;
+                    }
+                }
             }
         }
 
