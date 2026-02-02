@@ -1,12 +1,10 @@
 
 let videoId = '';
 let player: any;
-let videoPromiseRes: any, videoPromiseRej: any;
-let videoPromise = new Promise((res, rej) => {
+let videoPromiseRes: any;
+let videoPromise = new Promise((res) => {
     videoPromiseRes = res;
-    videoPromiseRej = rej;
 });
-let videoStatus: any;
 
 declare global {
     // Note the capital "W"
@@ -45,22 +43,12 @@ function onYouTubeIframeAPIReady() {
             autoplay: 1
         },
         events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onReady': onPlayerReady
         }
     });
 }
 function onPlayerReady() {
     videoPromiseRes(player);
-}
-function onPlayerStateChange(event: any) {
-    const yt: any = window.YT;
-    if (event.data == yt.PlayerState.PLAYING) {
-        videoStatus = event.data;
-    }
-    else {
-        videoStatus = null;
-    }
 }
 
 
