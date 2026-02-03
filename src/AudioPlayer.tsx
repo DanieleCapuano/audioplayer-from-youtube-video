@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, type SyntheticEvent } from "react";
 import { setupVideo, playVideo, pauseVideo, stopVideo } from "./utils/yt";
 import { PlayArrow, Pause, Stop } from '@mui/icons-material';
 import "./style.scss";
@@ -34,7 +34,22 @@ export function AudioPlayer({ videoId }: { videoId: string }) {
     }, [
         player,
         currentState
-    ])
+    ]);
+
+    const manualBrowse: any = useCallback((ev: SyntheticEvent) => {
+        if (!player) return;
+
+        const { nativeEvent } = ev;
+        const { offsetX, target }: any = nativeEvent as MouseEvent;
+        const { size } = target.computedStyleMap();
+
+        const newPos = offsetX / size;
+        const newPosDur = newPos * player.getDuration();
+        const time = newPos * 100;
+        player.seekTo(newPosDur);
+        setCurrentPlaybackState({ time });
+
+    }, [player]);
 
     const setCtl = useCallback((ctlval: string) => {
         setCurrentState(ctlval);
@@ -61,9 +76,9 @@ export function AudioPlayer({ videoId }: { videoId: string }) {
                     <Stop></Stop>
                 </div>
             </div>
-            <div className="status-container">
+            <div className="status-container" onClick={manualBrowse}>
                 <div className="base"></div>
-                <div className="status" style={{ width: (currentPlaybackState.time || 0) + "%" }}></div>
+                <div className="status" style={{ width: 'calc(' + (currentPlaybackState.time || 0) + "%" + " - 20px" }}></div>
             </div>
         </div>
     );
