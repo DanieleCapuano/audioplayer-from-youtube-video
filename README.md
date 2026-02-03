@@ -3,15 +3,16 @@
 Simple audio player from a youtube video.
 It uses YT API. See https://developers.google.com/youtube/iframe_api_reference
 
-**Install**
+## Install
 npm i
 
-**Dev**
-npm run Dev
+## Dev
+npm run dev
 
-**Build**
+## Build
 npm run build
 
-**Test**
+## Test
 cd test
+
 npm i && npm run dev
