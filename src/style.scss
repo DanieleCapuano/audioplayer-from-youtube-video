@@ -6,7 +6,9 @@
     }
 
     .audio-player {
-        width: 500px;
+        position: relative;
+        width: 100%;
+        min-width: 200px;
         height: 40px;
         display: flex;
         flex-direction: row;
