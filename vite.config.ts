@@ -13,6 +13,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   build: {
+    emptyOutDir: false, // <--- defaults to `true`
     lib: {
       entry: resolve(__dirname, 'src/main.tsx'),
       name: 'audioYT',
