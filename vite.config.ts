@@ -11,10 +11,11 @@ export default defineConfig({
   build: {
     emptyOutDir: false, // <--- defaults to `true`
     lib: {
-      entry: resolve(__dirname, 'src/main.tsx'),
+      entry: resolve(__dirname, 'lib/main.ts'),
       name: 'audioYT',
       // the proper extensions will be added
       fileName: 'audio-yt',
+      formats: ['es']
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled
