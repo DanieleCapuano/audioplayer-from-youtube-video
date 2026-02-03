@@ -9,5 +9,4 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
-const lib = { AudioPlayer };
-export default lib;
+export default { AudioPlayer };
