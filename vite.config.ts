@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import cssInjectedByJsPlugin from "vite-plugin-css-injected-by-js";
 
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -7,7 +8,10 @@ import { fileURLToPath } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    cssInjectedByJsPlugin()
+  ],
   build: {
     emptyOutDir: false, // <--- defaults to `true`
     lib: {
@@ -27,6 +31,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
         },
+        manualChunks: undefined
       },
     },
   },
